@@ -1,0 +1,25 @@
+### Example booking conflict flow
+# This file is a placeholder for REST Client style API checks.
+# Update endpoint paths after the backend booking API is implemented.
+
+### Create approved booking
+POST http://localhost:3000/bookings
+Content-Type: application/json
+
+{
+  "equipmentId": "camera-01",
+  "startsAt": "2026-07-06T10:00:00.000Z",
+  "endsAt": "2026-07-06T12:00:00.000Z",
+  "status": "approved"
+}
+
+### Attempt overlapping booking
+POST http://localhost:3000/bookings
+Content-Type: application/json
+
+{
+  "equipmentId": "camera-01",
+  "startsAt": "2026-07-06T11:00:00.000Z",
+  "endsAt": "2026-07-06T13:00:00.000Z",
+  "status": "requested"
+}

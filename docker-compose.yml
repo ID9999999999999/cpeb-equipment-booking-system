@@ -4,9 +4,9 @@ services:
     container_name: cpeb_postgres
     restart: unless-stopped
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: cpeb_dev
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-cpeb_dev}
     ports:
       - "5432:5432"
     volumes:
@@ -20,9 +20,9 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE_URL: postgresql://postgres:postgres@db:5432/cpeb_dev?schema=public
-      JWT_SECRET: local_dev_secret
-      PORT: 3000
+      DATABASE_URL: ${DATABASE_URL:-postgresql://postgres:postgres@db:5432/cpeb_dev?schema=public}
+      JWT_SECRET: ${JWT_SECRET:-replace_with_a_long_random_local_development_secret}
+      PORT: ${PORT:-3000}
     ports:
       - "3000:3000"
 
