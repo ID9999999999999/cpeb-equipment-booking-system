@@ -30,16 +30,27 @@ class DashboardScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: const Text('Equipment Booking')),
-      drawer: isWide ? null : const Drawer(child: Center(child: Text('Navigation'))),
+      drawer: isWide
+          ? null
+          : const Drawer(child: Center(child: Text('Navigation'))),
       body: Row(
         children: [
           if (isWide)
-            NavigationRail(
+            const NavigationRail(
               selectedIndex: 0,
-              destinations: const [
-                NavigationRailDestination(icon: Icon(Icons.dashboard), label: Text('Dashboard')),
-                NavigationRailDestination(icon: Icon(Icons.devices), label: Text('Equipment')),
-                NavigationRailDestination(icon: Icon(Icons.event), label: Text('Bookings')),
+              destinations: [
+                NavigationRailDestination(
+                  icon: Icon(Icons.dashboard),
+                  label: Text('Dashboard'),
+                ),
+                NavigationRailDestination(
+                  icon: Icon(Icons.devices),
+                  label: Text('Equipment'),
+                ),
+                NavigationRailDestination(
+                  icon: Icon(Icons.event),
+                  label: Text('Bookings'),
+                ),
               ],
             ),
           const Expanded(
@@ -61,11 +72,29 @@ class _DashboardContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: const [
-        Text('University Equipment Booking System', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+        Text(
+          'University Equipment Booking System',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        ),
         SizedBox(height: 16),
-        Card(child: ListTile(title: Text('Available Equipment'), subtitle: Text('Browse and request resources'))),
-        Card(child: ListTile(title: Text('Booking Conflict Prevention'), subtitle: Text('Overlapping reservations must be rejected'))),
-        Card(child: ListTile(title: Text('Approval Workflow'), subtitle: Text('Lab managers approve or reject requests'))),
+        Card(
+          child: ListTile(
+            title: Text('Available Equipment'),
+            subtitle: Text('Browse and request resources'),
+          ),
+        ),
+        Card(
+          child: ListTile(
+            title: Text('Booking Conflict Prevention'),
+            subtitle: Text('Overlapping reservations must be rejected'),
+          ),
+        ),
+        Card(
+          child: ListTile(
+            title: Text('Approval Workflow'),
+            subtitle: Text('Lab managers approve or reject requests'),
+          ),
+        ),
       ],
     );
   }
