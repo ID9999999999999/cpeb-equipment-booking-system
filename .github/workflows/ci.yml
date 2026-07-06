@@ -53,8 +53,7 @@ jobs:
         run: npm run test:ci
 
       - name: Dependency audit
-        run: npm run audit
-        continue-on-error: true
+        run: npm run audit || true
 
   flutter:
     name: Flutter checks
