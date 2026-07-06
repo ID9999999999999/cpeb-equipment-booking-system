@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres:16
+    container_name: cpeb_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: cpeb_dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - cpeb_pgdata:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+    container_name: cpeb_backend
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/cpeb_dev?schema=public
+      JWT_SECRET: local_dev_secret
+      PORT: 3000
+    ports:
+      - "3000:3000"
+
+volumes:
+  cpeb_pgdata:

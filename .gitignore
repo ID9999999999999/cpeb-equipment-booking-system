@@ -1,0 +1,34 @@
+# Environment
+.env
+.env.local
+*.pem
+*.key
+
+# Node / NestJS
+node_modules/
+dist/
+coverage/
+npm-debug.log*
+
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Python accidental caches
+__pycache__/
+*.pyc
+.venv/
+venv/
